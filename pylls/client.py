@@ -141,19 +141,3 @@ class CachetAPIEndPoint(object):
         self._put = api_client.put
         self._delete = api_client.delete
         self.paginate_get = partial(api_client.paginate_request, method='GET')
-
-    def get(self, *args, **kwargs):
-        """Unimplemented get method"""
-        raise NotImplementedError("Operation not implemented")
-
-    def create(self, *args, **kwargs):
-        """Unimplemented create method"""
-        raise NotImplementedError("Operation not implemented")
-
-    def update(self, *args, **kwargs):
-        """Unimplemented update method"""
-        raise NotImplementedError("Operation not implemented")
-
-    def delete(self, *args, **kwargs):
-        """Unimplemented delete method"""
-        raise NotImplementedError("Operation not implemented")
