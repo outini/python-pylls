@@ -1,5 +1,5 @@
-[![Python Support](https://img.shields.io/badge/python-2.7,3.5-blue.svg)](https://github.com/outini/python-pylls/)
-[![License](https://img.shields.io/badge/license-GPLv2-green.svg)](https://github.com/outini/python-pylls/)
+|PythonSupport|_
+|License|_
 
 pylls - Python library to interface Cachet API (cachethq.io)
 ============================================================
@@ -26,3 +26,9 @@ License
 -------
 
 "GNU GENERAL PUBLIC LICENSE" (Version 2) *(see LICENSE file)*
+
+
+.. |PythonSupport| image:: https://img.shields.io/badge/python-3.4-blue.svg
+.. _Python Support: https://github.com/outini/python-pylls/
+.. |License| image:: https://img.shields.io/badge/license-GPLv2-green.svg
+.. _License: https://github.com/outini/python-pylls/
