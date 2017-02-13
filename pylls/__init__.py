@@ -1,9 +1,9 @@
 #
-#    Cachet API python client (pylls)
+#    Cachet API python client and interface (python-pylls)
 #
 #    Copyright (C) 2017 Denis Pompilio (jawa) <denis.pompilio@gmail.com>
 #
-#    This file is part of pylls
+#    This file is part of python-pylls
 #
 #    This program is free software; you can redistribute it and/or
 #    modify it under the terms of the GNU General Public License

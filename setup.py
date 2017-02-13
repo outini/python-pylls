@@ -1,5 +1,5 @@
 #
-#    Python library to interface Cachet API (cachethq.io) (python-pylls)
+#    Cachet API python client and interface (python-pylls)
 #
 #    Copyright (C) 2017 Denis Pompilio (jawa) <denis.pompilio@gmail.com>
 #

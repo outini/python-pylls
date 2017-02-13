@@ -7,8 +7,8 @@ pylls - Python library to interface Cachet API (cachethq.io)
 * *Contact:* Denis 'jawa' Pompilio <denis.pompilio@gmail.com>
 * *Sources:* https://github.com/outini/python-pylls/
 
-This package provides a simple python library to interface the Cachet web
-interface API. Please read also: https://docs.cachethq.io/.
+This package provides a simple python library to interface the Cachet web API.
+Please read also: https://docs.cachethq.io/.
 
 Installation
 ------------
