@@ -19,7 +19,6 @@
 #    along with this program; if not, see <http://www.gnu.org/licenses/>.
 
 from . import client
-from . import exceptions
 
 
 class ApiParams(dict):
@@ -47,18 +46,6 @@ class Ping(client.CachetAPIEndPoint):
         """
         return self._get('ping')['data']
 
-    def create(self, *args, **kwargs):
-        """Unsupported operation: create"""
-        raise exceptions.UnsupportedOperation
-
-    def update(self, *args, **kwargs):
-        """Unsupported operation: update"""
-        raise exceptions.UnsupportedOperation
-
-    def delete(self, *args, **kwargs):
-        """Unsupported operation: delete"""
-        raise exceptions.UnsupportedOperation
-
 
 class Version(client.CachetAPIEndPoint):
     """Version endpoint: https://docs.cachethq.io/reference#version
@@ -73,18 +60,6 @@ class Version(client.CachetAPIEndPoint):
         :return: Cachet version data (:class:`dict`)
         """
         return self._get('version')['data']
-
-    def create(self, *args, **kwargs):
-        """Unsupported operation: create"""
-        raise exceptions.UnsupportedOperation
-
-    def update(self, *args, **kwargs):
-        """Unsupported operation: update"""
-        raise exceptions.UnsupportedOperation
-
-    def delete(self, *args, **kwargs):
-        """Unsupported operation: delete"""
-        raise exceptions.UnsupportedOperation
 
 
 class Components(client.CachetAPIEndPoint):
@@ -380,10 +355,6 @@ class Metrics(client.CachetAPIEndPoint):
         data['display'] = display
         return self._post('metrics', data=data)['data']
 
-    def update(self, *args, **kwargs):
-        """Unsupported operation: update"""
-        raise exceptions.UnsupportedOperation
-
     def delete(self, metric_id):
         """
 
@@ -420,10 +391,6 @@ class MetricPoints(client.CachetAPIEndPoint):
         data['value'] = value
         data['timestamp'] = timestamp
         return self._get('metrics/%s/points' % metric_id, data=data)
-
-    def update(self, *args, **kwargs):
-        """Unsupported operation: update"""
-        raise exceptions.UnsupportedOperation
 
     def delete(self, metric_id, point_id):
         """Delete a Metric Point
@@ -467,10 +434,6 @@ class Subscribers(client.CachetAPIEndPoint):
         data['verify'] = verify
         data['components'] = components
         return self._post('subscribers', data=data)['data']
-
-    def update(self, *args, **kwargs):
-        """Unsupported operation: update"""
-        raise exceptions.UnsupportedOperation
 
     def delete(self, subscriber_id):
         """Delete a Subscriber
