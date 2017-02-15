@@ -390,7 +390,7 @@ class MetricPoints(client.CachetAPIEndPoint):
         data = ApiParams()
         data['value'] = value
         data['timestamp'] = timestamp
-        return self._get('metrics/%s/points' % metric_id, data=data)
+        return self._post('metrics/%s/points' % metric_id, data=data)
 
     def delete(self, metric_id, point_id):
         """Delete a Metric Point
