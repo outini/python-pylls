@@ -1,4 +1,4 @@
-|PythonSupport|_ |License|_ |Codacy|_
+|PythonSupport|_ |License|_ |Codacy|_ |Coverage|_
 
 pylls - Python library to interface Cachet API (cachethq.io)
 ============================================================
@@ -33,3 +33,5 @@ License
 .. _License: https://github.com/outini/python-pylls/
 .. |Codacy| image:: https://api.codacy.com/project/badge/Grade/515d9cec36314e5d95a957ede5eb89f1
 .. _Codacy: https://www.codacy.com/app/outini/python-pylls
+.. |Coverage| image:: https://api.codacy.com/project/badge/Coverage/515d9cec36314e5d95a957ede5eb89f1
+.. _Coverage: https://www.codacy.com/app/outini/python-pylls
