@@ -377,7 +377,7 @@ class MetricPoints(client.CachetAPIEndPoint):
         :param int metric_id: Metric ID
         :return: Metric points data (:class:`dict`)
         """
-        return self._get('metrics/%s/points' % metric_id, **kwargs)
+        return self.paginate_get('metrics/%s/points' % metric_id, **kwargs)
 
     def create(self, metric_id, value, timestamp=None):
         """Add a Metric Point to a Metric
