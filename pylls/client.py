@@ -92,7 +92,10 @@ class CachetAPIClient(object):
         # If API returns an error, we simply raise and let caller handle it
         response.raise_for_status()
 
-        return response.json()
+        try:
+            return response.json()
+        except:
+            return {'data': response.text}
 
     def paginate_request(self, path, method, data=None, **kwargs):
         """Handle Cachet request pagination
