@@ -123,7 +123,6 @@ class CachetAPIClient(object):
                 try:
                     links = response['meta']['pagination']['links']
                     next_page = links.get('next_page')
-                    print(links)
                 except KeyError:
                     next_page = None
 
