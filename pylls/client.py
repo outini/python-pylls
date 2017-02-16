@@ -82,6 +82,9 @@ class CachetAPIClient(object):
         else:
             url = path
 
+        if data is None:
+            data = {}
+
         response = self.r_session.request(method, url,
                                           data=json.dumps(data),
                                           headers=self.request_headers,
