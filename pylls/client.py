@@ -97,20 +97,17 @@ class CachetAPIClient(object):
 
         try:
             return response.json()
-        except:
+        except ValueError:
             return {'data': response.text}
 
     def paginate_request(self, path, method, data=None, **kwargs):
-        """Handle Cachet request pagination
 
         :param str path: API endpoint's path to request
         :param str method: HTTP method to use
-        :param obj data: Data to send (optional)
 
         Cachet pagination is handled and next pages requested on demand.
 
         Additional named argument may be passed and are directly transmitted
-        to Session.request() call.
 
         :return: Response data items (:class:`Generator`)
         """
