@@ -504,9 +504,11 @@ class Subscribers(client.CachetAPIEndPoint):
 
 
 class Actions(client.CachetAPIEndPoint):
-    """Actions endpoint: https://docs.cachethq.io/reference#get-actions
+    """Actions API endpoint
 
     This endpoint is not implemented in Cachet 2.3 and will be released in 2.4
+
+    .. seealso:: https://docs.cachethq.io/reference#get-actions
     """
     def __init__(self, *args, **kwargs):
         """Initialization method"""
