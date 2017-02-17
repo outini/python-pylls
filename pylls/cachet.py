@@ -176,7 +176,7 @@ class Components(client.CachetAPIEndPoint):
 
 
 class ComponentGroups(client.CachetAPIEndPoint):
-    """Version endpoint: https://docs.cachethq.io/reference#get-componentgroups
+    """Component groups API endpoint
     """
     def __init__(self, *args, **kwargs):
         """Initialization method"""
@@ -190,7 +190,9 @@ class ComponentGroups(client.CachetAPIEndPoint):
 
         Additional named arguments may be passed and are directly transmitted
         to API. It is useful to use the API search features.
-        See https://docs.cachethq.io/docs/advanced-api-usage
+
+        .. seealso:: https://docs.cachethq.io/reference#get-componentgroups
+        .. seealso:: https://docs.cachethq.io/docs/advanced-api-usage
         """
         path = 'components/groups'
         if group_id is not None:
@@ -202,11 +204,10 @@ class ComponentGroups(client.CachetAPIEndPoint):
 
         :param str name: Name of the component group
         :param int order: Order of the component group
-        :param int collapsed: Collapse the group?
-                                0 = No.
-                                1 = Yes.
-                                2 = If a component is not Operational.
+        :param int collapsed: Collapse the group? 0-2
         :return: Created component group data (:class:`dict`)
+
+        .. seealso:: https://docs.cachethq.io/reference#post-componentgroups
         """
         data = ApiParams()
         data['name'] = name
@@ -222,6 +223,8 @@ class ComponentGroups(client.CachetAPIEndPoint):
         :param int order: Order of the group
         :param int collapsed: Collapse the group?
         :return: Updated component group data (:class:`dict`)
+
+        .. seealso:: https://docs.cachethq.io/reference#put-component-group
         """
         data = ApiParams()
         data['group'] = group_id
@@ -234,9 +237,11 @@ class ComponentGroups(client.CachetAPIEndPoint):
         """Delete a Component Group
 
         :param int group_id: Component Group ID
-        :return: Response data (:class:`dict`)
+        :return: :obj:`None`
+
+        .. seealso:: https://docs.cachethq.io/reference#delete-a-component
         """
-        return self._delete('components/groups/%s' % group_id)['data']
+        self._delete('components/groups/%s' % group_id)
 
 
 class Incidents(client.CachetAPIEndPoint):
