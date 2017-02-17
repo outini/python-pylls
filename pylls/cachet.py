@@ -513,3 +513,8 @@ class Actions(client.CachetAPIEndPoint):
     def __init__(self, *args, **kwargs):
         """Initialization method"""
         super(Actions, self).__init__(*args, **kwargs)
+
+
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
