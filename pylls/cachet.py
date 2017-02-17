@@ -456,7 +456,7 @@ class MetricPoints(client.CachetAPIEndPoint):
 
 
 class Subscribers(client.CachetAPIEndPoint):
-    """Subscribers endpoint: https://docs.cachethq.io/reference#get-subscribers
+    """Subscribers API endpoint
     """
     def __init__(self, *args, **kwargs):
         """Initialization method"""
@@ -469,7 +469,9 @@ class Subscribers(client.CachetAPIEndPoint):
 
         Additional named arguments may be passed and are directly transmitted
         to API. It is useful to use the API search features.
-        See https://docs.cachethq.io/docs/advanced-api-usage
+
+        .. seealso:: https://docs.cachethq.io/reference#get-subscribers
+        .. seealso:: https://docs.cachethq.io/docs/advanced-api-usage
         """
 
         return self.paginate_get('subscribers', data=kwargs)
@@ -481,6 +483,8 @@ class Subscribers(client.CachetAPIEndPoint):
         :param bool verify: Whether to send verification email
         :param list components: Components ID list, defaults to all
         :return: Created subscriber data (:class:`dict`)
+
+        .. seealso:: https://docs.cachethq.io/reference#subscribers
         """
         data = ApiParams()
         data['email'] = email
@@ -492,9 +496,11 @@ class Subscribers(client.CachetAPIEndPoint):
         """Delete a Subscriber
 
         :param int subscriber_id: Subscriber ID
-        :return: Deleted subscriber data (:class:`dict`)
+        :return: :obj:`None`
+
+        .. seealso:: https://docs.cachethq.io/reference#delete-subscriber
         """
-        return self._delete('subscribers/%s' % subscriber_id)['data']
+        self._delete('subscribers/%s' % subscriber_id)
 
 
 class Actions(client.CachetAPIEndPoint):
