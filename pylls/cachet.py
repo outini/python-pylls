@@ -41,7 +41,7 @@ class ApiParams(dict):
 
 
 class Ping(client.CachetAPIEndPoint):
-    """Ping endpoint: https://docs.cachethq.io/reference#ping
+    """Ping API endpoint
     """
     def __init__(self, *args, **kwargs):
         """Initialization method"""
@@ -50,7 +50,9 @@ class Ping(client.CachetAPIEndPoint):
     def get(self):
         """Test that the API is responding to your requests
 
-        :return: Ping response data (:class:`dict`)
+        :return: Ping response data (:class:`str`)
+
+        .. seealso:: https://docs.cachethq.io/reference#ping
         """
         return self._get('ping')['data']
 
