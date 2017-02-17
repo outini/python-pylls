@@ -39,6 +39,27 @@ class CachetAPIClient(object):
     :param int timeout: Request timeout in seconds
     :param str api_endpoint: Cachet API endpoint
     :param str api_token: Cachet API token
+
+    .. method:: get(self, path, data=None, **kwargs)
+
+        Partial method invoking :meth:`~CachetAPIClient.request` with
+        http method *GET*.
+
+    .. method:: post(self, path, data=None, **kwargs)
+
+        Partial method invoking :meth:`~CachetAPIClient.request` with
+        http method *POST*.
+
+    .. method:: put(self, path, data=None, **kwargs)
+
+        Partial method invoking :meth:`~CachetAPIClient.request` with
+        http method *PUT*.
+
+    .. method:: delete(self, path, data=None, **kwargs)
+
+        Partial method invoking :meth:`~CachetAPIClient.request` with
+        http method *DELETE*.
+
     """
     def __init__(self, api_endpoint, api_token=None, verify=None, timeout=None):
         """Initialization method"""
@@ -63,16 +84,15 @@ class CachetAPIClient(object):
         self.delete = partial(self.request, method='DELETE')
 
     def request(self, path, method, data=None, **kwargs):
-        """Handle reauests to API
+        """Handle requests to API
 
         :param str path: API endpoint's path to request
         :param str method: HTTP method to use
-        :param obj data: Data to send (optional)
+        :param dict data: Data to send (optional)
+        :return: Parsed json response as :class:`dict`
 
         Additional named argument may be passed and are directly transmitted
-        to Session.request() call.
-
-        :return: Parsed json response as :class:`dict`
+        to :meth:`request` method of :class:`requests.Session` object.
         """
         if self.api_token:
             self.request_headers['X-Cachet-Token'] = self.api_token
@@ -101,15 +121,17 @@ class CachetAPIClient(object):
             return {'data': response.text}
 
     def paginate_request(self, path, method, data=None, **kwargs):
+        """Handle paginated requests to API
 
         :param str path: API endpoint's path to request
         :param str method: HTTP method to use
+        :param dict data: Data to send (optional)
+        :return: Response data items (:class:`Generator`)
 
         Cachet pagination is handled and next pages requested on demand.
 
         Additional named argument may be passed and are directly transmitted
-
-        :return: Response data items (:class:`Generator`)
+        to :meth:`request` method of :class:`requests.Session` object.
         """
         next_page = path
         while next_page:
@@ -133,7 +155,40 @@ class CachetAPIClient(object):
 class CachetAPIEndPoint(object):
     """Cachet API endpoint
 
-    :param CachetAPIClient api_client: Cachet API client object
+    This class do not provide convenience methods :meth:`get`, :meth:`post`,
+    :meth:`put` and :meth:`delete`. Those methods should be implemented by
+    subclasses.
+
+    :param CachetAPIClient api_client: Cachet API client instance
+
+    .. attribute:: api_client
+
+        :class:`~client.CachetAPIClient` instance passed at instantiation.
+
+    .. attribute:: _get
+
+        Alias to :meth:`~CachetAPIClient.get` method of :attr:`api_client`
+        instance.
+
+    .. attribute:: _post
+
+        Alias to :meth:`~CachetAPIClient.post` method of :attr:`api_client`
+        instance.
+
+    .. attribute:: _put
+
+        Alias to :meth:`~CachetAPIClient.put` method of :attr:`api_client`
+        instance.
+
+    .. attribute:: _delete
+
+        Alias to :meth:`~CachetAPIClient.delete` method of :attr:`api_client`
+        instance.
+
+    .. method:: paginate_get(self, path, data=None, **kwargs)
+
+        Partial method invoking :meth:`paginate_request` of :attr:`api_client`
+        instance with http method *GET*.
     """
     def __init__(self, api_client):
         """Initialization method"""
