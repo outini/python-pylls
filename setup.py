@@ -23,12 +23,11 @@ from distutils.core import setup
 
 if __name__ == '__main__':
     readme_file = os.path.join(os.path.dirname(__file__), 'README.rst')
-    version_file = os.path.join(os.path.dirname(__file__), "VERSION")
-    release = open(version_file, 'r').read().strip()
+    release = "0.8.0"
 
     setup(
         name="python-pylls",
-        version=".".join(release.split('.')),
+        version=release,
         url="https://github.com/outini/python-pylls",
         author="Denis Pompilio (jawa)",
         author_email="denis.pompilio@gmail.com",
