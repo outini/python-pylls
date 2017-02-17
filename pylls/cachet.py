@@ -245,7 +245,7 @@ class ComponentGroups(client.CachetAPIEndPoint):
 
 
 class Incidents(client.CachetAPIEndPoint):
-    """Incidents endpoint: https://docs.cachethq.io/reference#get-incidents
+    """Incidents API endpoint
     """
     def __init__(self, *args, **kwargs):
         """Initialization method"""
@@ -259,7 +259,9 @@ class Incidents(client.CachetAPIEndPoint):
 
         Additional named arguments may be passed and are directly transmitted
         to API. It is useful to use the API search features.
-        See https://docs.cachethq.io/docs/advanced-api-usage
+
+        .. seealso:: https://docs.cachethq.io/reference#get-incidents
+        .. seealso:: https://docs.cachethq.io/docs/advanced-api-usage
         """
         path = 'incidents'
         if incident_id is not None:
@@ -282,6 +284,8 @@ class Incidents(client.CachetAPIEndPoint):
         :param str template: The template slug to use
         :param list tplvars: The variables to pass to the template
         :return: Created incident data (:class:`dict`)
+
+        .. seealso:: https://docs.cachethq.io/reference#incidents
         """
         data = ApiParams()
         data['name'] = name
@@ -313,6 +317,8 @@ class Incidents(client.CachetAPIEndPoint):
         :param str template: The template slug to use
         :param list tpl_vars: The variables to pass to the template
         :return: Created incident data (:class:`dict`)
+
+        .. seealso:: https://docs.cachethq.io/reference#update-an-incident
         """
         data = ApiParams()
         data['name'] = name
@@ -331,9 +337,11 @@ class Incidents(client.CachetAPIEndPoint):
         """Delete an Incident
 
         :param int incident_id: Incident ID
-        :return: Deleted incident data (:class:`dict`)
+        :return: :obj:`None`
+
+        .. seealso:: https://docs.cachethq.io/reference#delete-an-incident
         """
-        return self._delete('incidents/%s' % incident_id)['data']
+        self._delete('incidents/%s' % incident_id)
 
 
 class Metrics(client.CachetAPIEndPoint):
