@@ -75,7 +75,7 @@ class Version(client.CachetAPIEndPoint):
 
 
 class Components(client.CachetAPIEndPoint):
-    """Version endpoint: https://docs.cachethq.io/reference#get-components
+    """Components API endpoint
     """
     def __init__(self, *args, **kwargs):
         """Initialization method"""
@@ -84,7 +84,11 @@ class Components(client.CachetAPIEndPoint):
 
     @property
     def groups(self):
-        """Component groups endpoint object (initialized on first call)"""
+        """Component groups
+
+        Special property which point to a :class:`~pylls.cachet.ComponentGroups`
+        instance for convenience. This instance is initialized on first call.
+        """
         if not self._groups:
             self._groups = ComponentGroups(self.api_client)
         return self._groups
@@ -97,7 +101,9 @@ class Components(client.CachetAPIEndPoint):
 
         Additional named arguments may be passed and are directly transmitted
         to API. It is useful to use the API search features.
-        See https://docs.cachethq.io/docs/advanced-api-usage
+
+        .. seealso:: https://docs.cachethq.io/reference#get-components
+        .. seealso:: https://docs.cachethq.io/docs/advanced-api-usage
         """
         path = 'components'
         if component_id is not None:
@@ -110,13 +116,15 @@ class Components(client.CachetAPIEndPoint):
 
         :param str name: Name of the component
         :param int status: Status of the component; 1-4
-                           https://docs.cachethq.io/docs/component-statuses
         :param str description: Description of the component (optional)
         :param str link: A hyperlink to the component (optional)
         :param int order: Order of the component (optional)
         :param int group_id: The group ID of the component (optional)
         :param bool enabled: Whether the component is enabled (optional)
         :return: Created component data (:class:`dict`)
+
+        .. seealso:: https://docs.cachethq.io/reference#components
+        .. seealso:: https://docs.cachethq.io/docs/component-statuses
         """
         data = ApiParams()
         data['name'] = name
@@ -134,14 +142,16 @@ class Components(client.CachetAPIEndPoint):
 
         :param int component_id: Component ID
         :param str name: Name of the component (optional)
-        :param int status: Status of the component; 1-4 (optional)
-                           https://docs.cachethq.io/docs/component-statuses
+        :param int status: Status of the component; 1-4
         :param str description: Description of the component (optional)
         :param str link: A hyperlink to the component (optional)
         :param int order: Order of the component (optional)
         :param int group_id: The group ID of the component (optional)
         :param bool enabled: Whether the component is enabled (optional)
         :return: Updated component data (:class:`dict`)
+
+        .. seealso:: https://docs.cachethq.io/reference#components
+        .. seealso:: https://docs.cachethq.io/docs/component-statuses
         """
         data = ApiParams()
         data['component'] = component_id
@@ -158,9 +168,11 @@ class Components(client.CachetAPIEndPoint):
         """Delete a component
 
         :param int component_id: Component ID
-        :return: Deleted component data (:class:`dict`)
+        :return: :obj:`None`
+
+        .. seealso:: https://docs.cachethq.io/reference#delete-a-components
         """
-        return self._delete('components/%s' % component_id)['data']
+        self._delete('components/%s' % component_id)
 
 
 class ComponentGroups(client.CachetAPIEndPoint):
