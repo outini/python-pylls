@@ -345,7 +345,7 @@ class Incidents(client.CachetAPIEndPoint):
 
 
 class Metrics(client.CachetAPIEndPoint):
-    """Metrics endpoint: https://docs.cachethq.io/reference#get-metrics
+    """Metrics API endpoint
     """
     def __init__(self, *args, **kwargs):
         """Initialization method"""
@@ -354,7 +354,11 @@ class Metrics(client.CachetAPIEndPoint):
 
     @property
     def points(self):
-        """Metric points endpoint object (initialized on first call)"""
+        """Metric points
+
+        Special property which point to a :class:`~pylls.cachet.MetricPoints`
+        instance for convenience. This instance is initialized on first call.
+        """
         if not self._points:
             self._points = MetricPoints(self.api_client)
         return self._points
@@ -367,7 +371,9 @@ class Metrics(client.CachetAPIEndPoint):
 
         Additional named arguments may be passed and are directly transmitted
         to API. It is useful to use the API search features.
-        See https://docs.cachethq.io/docs/advanced-api-usage
+
+        .. seealso:: https://docs.cachethq.io/reference#get-metrics
+        .. seealso:: https://docs.cachethq.io/docs/advanced-api-usage
         """
         path = 'metrics'
         if metric_id is not None:
@@ -375,7 +381,7 @@ class Metrics(client.CachetAPIEndPoint):
         return self.paginate_get(path, data=kwargs)
 
     def create(self, name, suffix, description, default_value, display=None):
-        """
+        """Create a new Metric
 
         :param str name: Name of metric
         :param str suffix: Metric unit
@@ -383,6 +389,8 @@ class Metrics(client.CachetAPIEndPoint):
         :param int default_value: Default value to use when a point is added
         :param int display: Display the chart on the status page
         :return: Created metric data (:class:`dict`)
+
+        .. seealso:: https://docs.cachethq.io/reference#metrics
         """
         data = ApiParams()
         data['name'] = name
@@ -393,12 +401,14 @@ class Metrics(client.CachetAPIEndPoint):
         return self._post('metrics', data=data)['data']
 
     def delete(self, metric_id):
-        """
+        """Delete a Metric
 
         :param int metric_id: Metric ID
-        :return: Deleted metric data (:class:`dict`)
+        :return: :obj:`None`
+
+        .. seealso:: https://docs.cachethq.io/reference#delete-a-metric
         """
-        return self._delete('metrics/%s' % metric_id)
+        self._delete('metrics/%s' % metric_id)
 
 
 class MetricPoints(client.CachetAPIEndPoint):
