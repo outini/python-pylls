@@ -25,7 +25,15 @@ class ApiParams(dict):
     """API parameters storage
 
     Convenience class for API parameters management.
-    setitem override to skip None value items.
+    The :meth:`__setitem__` method is overridden to skip None value items.
+
+    **Example:**
+
+        >>> params = ApiParams(first=1, second=2)
+        >>> params['none'] = None
+        >>> params['third'] = 3
+        >>> print(sorted(params.items()))
+        [('first', 1), ('second', 2), ('third', 3)]
     """
     def __setitem__(self, key, value):
         if value is not None:
