@@ -412,7 +412,7 @@ class Metrics(client.CachetAPIEndPoint):
 
 
 class MetricPoints(client.CachetAPIEndPoint):
-    """MetricPoints endpoint: https://docs.cachethq.io/reference#get-metric-points
+    """MetricPoints API endpoint
     """
     def __init__(self, *args, **kwargs):
         """Initialization method"""
@@ -423,6 +423,8 @@ class MetricPoints(client.CachetAPIEndPoint):
 
         :param int metric_id: Metric ID
         :return: Metric points data (:class:`dict`)
+
+        .. seealso:: https://docs.cachethq.io/reference#get-metric-points
         """
         return self.paginate_get('metrics/%s/points' % metric_id, **kwargs)
 
@@ -433,6 +435,8 @@ class MetricPoints(client.CachetAPIEndPoint):
         :param int value: Value to plot on the metric graph
         :param str timestamp: Unix timestamp of the point was measured
         :return: Created metric point data (:class:`dict`)
+
+        .. seealso:: https://docs.cachethq.io/reference#post-metric-points
         """
         data = ApiParams()
         data['value'] = value
@@ -444,9 +448,11 @@ class MetricPoints(client.CachetAPIEndPoint):
 
         :param metric_id: Metric ID
         :param point_id: Metric point ID
-        :return: Deleted metric point data (:class:`dict`)
+        :return: :obj:`None`
+
+        .. seealso:: https://docs.cachethq.io/reference#delete-a-metric-point
         """
-        return self._delete('metrics/%s/points/%s' % (metric_id, point_id))
+        self._delete('metrics/%s/points/%s' % (metric_id, point_id))
 
 
 class Subscribers(client.CachetAPIEndPoint):
