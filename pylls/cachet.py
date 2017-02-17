@@ -58,7 +58,7 @@ class Ping(client.CachetAPIEndPoint):
 
 
 class Version(client.CachetAPIEndPoint):
-    """Version endpoint: https://docs.cachethq.io/reference#version
+    """Version API endpoint
     """
     def __init__(self, *args, **kwargs):
         """Initialization method"""
@@ -67,7 +67,9 @@ class Version(client.CachetAPIEndPoint):
     def get(self):
         """Get the Cachet version
 
-        :return: Cachet version data (:class:`dict`)
+        :return: Cachet version data (:class:`str`)
+
+        .. seealso:: https://docs.cachethq.io/reference#version
         """
         return self._get('version')['data']
 
