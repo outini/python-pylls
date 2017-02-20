@@ -1,4 +1,4 @@
-|PythonSupport|_ |License|_ |Codacy|_ |Coverage|_
+|PythonPIP|_ |PythonSupport|_ |License|_ |Codacy|_ |Coverage|_
 
 pylls - Python library to interface Cachet API (cachethq.io)
 ============================================================
@@ -13,20 +13,26 @@ Please read also: https://docs.cachethq.io/.
 Installation
 ------------
 
+Via https://pypi.python.org:
+
+    pip install python-pylls
+
+Manual installation:
+
     python setup.py install
 
 Documentation
 -------------
 
-This package uses SphinxDoc to generate documentation. It will be published
-online soon...
+Documentation is available online: http://pythonhosted.org/python-pylls/
 
 License
 -------
 
 "GNU GENERAL PUBLIC LICENSE" (Version 2) *(see LICENSE file)*
 
-
+.. |PythonPIP| image:: https://badge.fury.io/py/python-pylls.svg
+.. _PythonPIP: https://pypi.python.org/pypi/python-pylls/
 .. |PythonSupport| image:: https://img.shields.io/badge/python-3.4-blue.svg
 .. _PythonSupport: https://github.com/outini/python-pylls/
 .. |License| image:: https://img.shields.io/badge/license-GPLv2-green.svg
