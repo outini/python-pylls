@@ -4,6 +4,10 @@ pylls - Python library to interface Cachet API (cachethq.io)
 Contact: Denis Pompilio (jawa) <denis.pompilio@gmail.com>
 https://github.com/outini/python-pylls
 
+=== v0.9.0 2017/02/20 ===
+    * Updated README.rst file
+    * PIP package is now signed
+
 === v0.8.0 2017/02/17 ===
     * Better handling of API responses
     * Fix of metric points creation
