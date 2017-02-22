@@ -136,8 +136,8 @@ class Components(client.CachetAPIEndPoint):
         data['enabled'] = enabled
         return self._post('components', data=data)['data']
 
-    def update(self, component_id, name=None, status=None,
-               description=None, link=None, order=0, group_id=0, enabled=True):
+    def update(self, component_id, name=None, status=None, description=None,
+               link=None, order=None, group_id=None, enabled=True):
         """Update a component
 
         :param int component_id: Component ID
