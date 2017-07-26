@@ -23,7 +23,7 @@ from distutils.core import setup
 
 if __name__ == '__main__':
     readme_file = os.path.join(os.path.dirname(__file__), 'README.rst')
-    release = "0.9.2"
+    release = "0.9.3"
 
     setup(
         name="python-pylls",
@@ -38,7 +38,7 @@ if __name__ == '__main__':
         license="GPLv2",
         platforms=['UNIX'],
         scripts=[],
-        packages=['pylls'],
+        packages=['pylls', 'pylls.tests'],
         package_dir={'pylls': 'pylls'},
         data_files=[('share/doc/python-pylls', ['README.rst', 'LICENSE'])],
         keywords=['api', 'status', 'cachet', 'python', 'pylls'],
