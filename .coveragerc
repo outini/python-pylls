@@ -5,3 +5,4 @@ exclude_lines =
 [run]
 omit =
     */.local/share/virtualenvs/*
+    pylls/tests/*
