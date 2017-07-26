@@ -128,7 +128,10 @@ class MockSession(MagicMock):
         if method == "GET":
             res = entries
             if len(p_params):
-                res = entries[int(p_params[0]) - 1]
+                try:
+                    res = entries[int(p_params[0]) - 1]
+                except IndexError:
+                    return self.respond({'data': ''}, HTTPError('API error'))
             if 'per_page' in data or 'page' in params:
                 page = int(params.get('page', [1])[0])
                 return self.paginate(url, res, page)
@@ -138,7 +141,10 @@ class MockSession(MagicMock):
             return self.respond({'data': entries[0]})
         elif method == "PUT" and len(p_params):
             assert self.validate_query_params(endpoint_path, method, data)
-            return self.respond({'data': entries[int(p_params[0]) - 1]})
+            try:
+                return self.respond({'data': entries[int(p_params[0]) - 1]})
+            except IndexError:
+                return self.respond({'data': ''}, HTTPError('API error'))
         elif method == "DELETE" and len(p_params):
             return self.respond({'data': ''})
         return self.respond({'data': ''}, HTTPError('API error'))
